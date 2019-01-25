@@ -45,10 +45,22 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=8.0.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.8.0.0\lib\net461\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net461\System.ValueTuple.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -144,14 +156,21 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Annotations\CnpjAttribute.cs" />
+    <Compile Include="Annotations\Mod11.cs" />
+    <Compile Include="App_Start\AutoMapperConfig.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="AutoMapper\DominioParaViewModelProfile.cs" />
+    <Compile Include="AutoMapper\ViewModelParaDominioProfile.cs" />
+    <Compile Include="Controllers\EstabelecimentosController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\EstabelecimentoViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -192,6 +211,11 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Estabelecimentos\Create.cshtml" />
+    <Content Include="Views\Estabelecimentos\Delete.cshtml" />
+    <Content Include="Views\Estabelecimentos\Details.cshtml" />
+    <Content Include="Views\Estabelecimentos\Edit.cshtml" />
+    <Content Include="Views\Estabelecimentos\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -209,6 +233,32 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FitCard.Comum.Entity\FitCard.Comum.Entity.csproj">
+      <Project>{d921f1d0-3031-4db2-9db3-8ff5538b9069}</Project>
+      <Name>FitCard.Comum.Entity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FitCard.DesafioPratico.DAL.Entity\FitCard.DesafioPratico.DAL.Entity.csproj">
+      <Project>{9cfa17e9-28ed-4b19-bf62-d408431235e1}</Project>
+      <Name>FitCard.DesafioPratico.DAL.Entity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FitCard.DesafioPratico.Dominio\FitCard.DesafioPratico.Dominio.csproj">
+      <Project>{7d5765fc-3dec-4617-9a97-9b6fb74fad88}</Project>
+      <Name>FitCard.DesafioPratico.Dominio</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FitCard.DesafioPratico.Repositorios.Entity\FitCard.DesafioPratico.Repositorios.Entity.csproj">
+      <Project>{5d2b178f-dcfa-4f05-8ce9-d9c86b83ce34}</Project>
+      <Name>FitCard.DesafioPratico.Repositorios.Entity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FitCard.Repositorios.Comum.Entity\FitCard.Repositorios.Comum.Entity.csproj">
+      <Project>{fbbd3a02-a5f2-4178-a79e-8155451db2f4}</Project>
+      <Name>FitCard.Repositorios.Comum.Entity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FitCard.Repositorios.Comum\FitCard.Repositorios.Comum.csproj">
+      <Project>{1c98a4dd-3c7e-429d-8beb-b7625aa3f56c}</Project>
+      <Name>FitCard.Repositorios.Comum</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

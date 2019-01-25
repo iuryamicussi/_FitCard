@@ -31,7 +31,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -41,7 +48,40 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Context\DesafioPraticoDbContext.cs" />
+    <Compile Include="Migrations\201901232135566_InitialCreate.cs" />
+    <Compile Include="Migrations\201901232135566_InitialCreate.Designer.cs">
+      <DependentUpon>201901232135566_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201901250146555_CamposExtrasEstabelecimento.cs" />
+    <Compile Include="Migrations\201901250146555_CamposExtrasEstabelecimento.Designer.cs">
+      <DependentUpon>201901250146555_CamposExtrasEstabelecimento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TypeConfiguration\EstabelecimentoTypeConfiguration.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FitCard.Comum.Entity\FitCard.Comum.Entity.csproj">
+      <Project>{d921f1d0-3031-4db2-9db3-8ff5538b9069}</Project>
+      <Name>FitCard.Comum.Entity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FitCard.DesafioPratico.Dominio\FitCard.DesafioPratico.Dominio.csproj">
+      <Project>{7d5765fc-3dec-4617-9a97-9b6fb74fad88}</Project>
+      <Name>FitCard.DesafioPratico.Dominio</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201901232135566_InitialCreate.resx">
+      <DependentUpon>201901232135566_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901250146555_CamposExtrasEstabelecimento.resx">
+      <DependentUpon>201901250146555_CamposExtrasEstabelecimento.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
