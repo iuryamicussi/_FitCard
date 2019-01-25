@@ -52,12 +52,20 @@ namespace FitCard.DesafioPratico.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,RazaoSocial,NomeFantasia,CNPJ,Email,Telefone,Categoria,Status,Agencia,Conta")] EstabelecimentoViewModel viewModel)
+        public ActionResult Create([Bind(Include = "Id,RazaoSocial,NomeFantasia,CNPJ,Email,Endereco,Cidade,Estado,Telefone,DataCadastro,Categoria,Status,Agencia,Conta")] EstabelecimentoViewModel viewModel)
         {
             if (ModelState.IsValid)
             {
                 Estabelecimento estabelecimento = Mapper.Map<EstabelecimentoViewModel, Estabelecimento>(viewModel);
-                repositorioEstabelecimentos.Inserir(estabelecimento);
+                try
+                {
+                    repositorioEstabelecimentos.Inserir(estabelecimento);
+                }
+                catch (Exception ex)
+                {
+                    ModelState.AddModelError("Telefone", ex);
+                }
+                
                 return RedirectToAction("Index");
             }
 
@@ -84,7 +92,7 @@ namespace FitCard.DesafioPratico.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,RazaoSocial,NomeFantasia,CNPJ,Email,Telefone,Categoria,Status,Agencia,Conta")] EstabelecimentoViewModel viewModel)
+        public ActionResult Edit([Bind(Include = "Id,RazaoSocial,NomeFantasia,CNPJ,Email,Endereco,Cidade,Estado,Telefone,DataCadastro,Categoria,Status,Agencia,Conta")] EstabelecimentoViewModel viewModel)
         {
             if (ModelState.IsValid)
             {

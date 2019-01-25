@@ -14,7 +14,25 @@ namespace FitCard.DesafioPratico.Repositorios.Entity
         public EstabelecimentosRepositorio(DesafioPraticoDbContext contexto) :
             base(contexto)
         {
+            
+        }
 
+        public override void Inserir(Estabelecimento entidade)
+        {
+            Validar(entidade);
+            base.Inserir(entidade);
+        }
+
+        public override void Alterar(Estabelecimento entidade)
+        {
+            Validar(entidade);
+            base.Alterar(entidade);
+        }
+
+        private void Validar(Estabelecimento entidade)
+        {
+            if (entidade.Categoria == Categoria.Supermercado && string.IsNullOrEmpty(entidade.Telefone))
+                throw new Exception("O Telefone é obrigatório para Estabelecimentos da categoria 'Supermercado'");
         }
     }
 }

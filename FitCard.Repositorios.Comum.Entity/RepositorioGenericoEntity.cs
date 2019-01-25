@@ -17,7 +17,7 @@ namespace FitCard.Repositorios.Comum.Entity
             _contexto = contexto;
         }
 
-        public void Alterar(TEntidade entidade)
+        public virtual void Alterar(TEntidade entidade)
         {
             _contexto.Set<TEntidade>().Attach(entidade);
             _contexto.Entry(entidade).State = EntityState.Modified;
@@ -37,7 +37,7 @@ namespace FitCard.Repositorios.Comum.Entity
             Excluir(entidade);
         }
 
-        public void Inserir(TEntidade entidade)
+        public virtual void Inserir(TEntidade entidade)
         {
             _contexto.Set<TEntidade>().Add(entidade);
             _contexto.SaveChanges();

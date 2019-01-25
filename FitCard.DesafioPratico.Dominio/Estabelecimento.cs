@@ -17,7 +17,7 @@ namespace FitCard.DesafioPratico.Dominio
         public string Cidade { get; set; }
         public string Estado { get; set; }
         public string Telefone { get; set; }
-        public DateTime DataCadastro { get; set; }
+        public DateTime? DataCadastro { get; set; }
         public Categoria? Categoria { get; set; }
         public Status? Status { get; set; }
         public string Agencia { get; set; }

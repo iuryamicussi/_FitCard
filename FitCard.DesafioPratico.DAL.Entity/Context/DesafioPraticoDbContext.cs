@@ -24,5 +24,8 @@ namespace FitCard.DesafioPratico.DAL.Entity.Context
             modelBuilder.Configurations.Add(new EstabelecimentoTypeConfiguration());
         }
 
+        //public System.Data.Entity.DbSet<FitCard.DesafioPratico.ViewModels.EstabelecimentoViewModel> EstabelecimentoViewModels { get; set; }
+
+        //public System.Data.Entity.DbSet<FitCard.DesafioPratico.ViewModels.EstabelecimentoViewModel> EstabelecimentoViewModels { get; set; }
     }
 }

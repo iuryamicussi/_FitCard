@@ -33,8 +33,22 @@ namespace FitCard.DesafioPratico.ViewModels
         [MaxLength(100)]
         public string Email { get; set; }
 
+        [DisplayName("Endereço")]
+        [MaxLength(100)]
+        public string Endereco { get; set; }
+
+        [MaxLength(100)]
+        public string Cidade { get; set; }
+
+        [MaxLength(50)]
+        public string Estado { get; set; }
+
         [MaxLength(100)]
         public string Telefone { get; set; }
+
+        [DisplayName("Data de Cadastro")]
+        [DataType(DataType.Date)]
+        public DateTime? DataCadastro { get; set; }
 
         [EnumDataType(typeof(Categoria))]
         public Categoria? Categoria { get; set; }
