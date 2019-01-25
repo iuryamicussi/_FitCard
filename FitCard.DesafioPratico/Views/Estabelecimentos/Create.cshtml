@@ -220,7 +220,6 @@
             $("#Categoria").on("change", e => {
                 $("#Telefone").rules("remove", "required");
                 if ($("#Categoria")[0].value == "0") {
-                    //$("#myForm").validate(); //sets up the validator
                     $("#Telefone").rules("add", {
                         required: true,
                         messages: {

@@ -32,7 +32,7 @@ namespace FitCard.DesafioPratico.Repositorios.Entity
         private void Validar(Estabelecimento entidade)
         {
             if (entidade.Categoria == Categoria.Supermercado && string.IsNullOrEmpty(entidade.Telefone))
-                throw new Exception("O Telefone é obrigatório para Estabelecimentos da categoria 'Supermercado'");
+                throw new CustomValidationException(nameof(entidade.Telefone),"O Telefone é obrigatório para Estabelecimentos da categoria 'Supermercado'");
         }
     }
 }

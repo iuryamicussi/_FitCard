@@ -61,9 +61,10 @@ namespace FitCard.DesafioPratico.Controllers
                 {
                     repositorioEstabelecimentos.Inserir(estabelecimento);
                 }
-                catch (Exception ex)
+                catch (CustomValidationException ex)
                 {
-                    ModelState.AddModelError("Telefone", ex);
+                    ModelState.AddModelError(ex.NomeCampo, ex.Message);
+                    return View(viewModel);
                 }
                 
                 return RedirectToAction("Index");
@@ -84,7 +85,7 @@ namespace FitCard.DesafioPratico.Controllers
             {
                 return HttpNotFound();
             }
-            return View(Mapper.Map<Estabelecimento,EstabelecimentoViewModel>(estabelecimento));
+            return View(Mapper.Map<Estabelecimento,EstabelecimentoEditViewModel>(estabelecimento));
         }
 
         // POST: Estabelecimentos/Edit/5
@@ -92,12 +93,21 @@ namespace FitCard.DesafioPratico.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,RazaoSocial,NomeFantasia,CNPJ,Email,Endereco,Cidade,Estado,Telefone,DataCadastro,Categoria,Status,Agencia,Conta")] EstabelecimentoViewModel viewModel)
+        public ActionResult Edit([Bind(Include = "Id,RazaoSocial,NomeFantasia,CNPJ,Email,Endereco,Cidade,Estado,Telefone,DataCadastro,Categoria,Status,Agencia,Conta")] EstabelecimentoEditViewModel viewModel)
         {
             if (ModelState.IsValid)
             {
-                Estabelecimento estabelecimento = Mapper.Map<EstabelecimentoViewModel, Estabelecimento> (viewModel);
-                repositorioEstabelecimentos.Alterar(estabelecimento);
+                Estabelecimento estabelecimento = Mapper.Map<EstabelecimentoEditViewModel, Estabelecimento> (viewModel);
+                try
+                {
+                    repositorioEstabelecimentos.Alterar(estabelecimento);
+                }
+                catch (CustomValidationException ex)
+                {
+                    ModelState.AddModelError(ex.NomeCampo, ex.Message);
+                    return View(viewModel);
+                }
+                
                 return RedirectToAction("Index");
             }
             return View(viewModel);
