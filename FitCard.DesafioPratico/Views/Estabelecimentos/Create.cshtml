@@ -1,7 +1,7 @@
 ﻿@model FitCard.DesafioPratico.ViewModels.EstabelecimentoViewModel
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Novo Registro";
 }
 
 <h2>Create</h2>
@@ -12,7 +12,7 @@
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h4>EstabelecimentoViewModel</h4>
+        <h4>Estabelecimento</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
@@ -128,7 +128,7 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Voltar para Lista", "Index")
 </div>
 
 @section Scripts {
