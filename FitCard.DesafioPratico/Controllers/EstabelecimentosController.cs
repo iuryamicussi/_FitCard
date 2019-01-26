@@ -85,7 +85,7 @@ namespace FitCard.DesafioPratico.Controllers
             {
                 return HttpNotFound();
             }
-            return View(Mapper.Map<Estabelecimento,EstabelecimentoEditViewModel>(estabelecimento));
+            return View(Mapper.Map<Estabelecimento,EstabelecimentoViewModel>(estabelecimento));
         }
 
         // POST: Estabelecimentos/Edit/5
@@ -93,11 +93,11 @@ namespace FitCard.DesafioPratico.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,RazaoSocial,NomeFantasia,CNPJ,Email,Endereco,Cidade,Estado,Telefone,DataCadastro,Categoria,Status,Agencia,Conta")] EstabelecimentoEditViewModel viewModel)
+        public ActionResult Edit([Bind(Include = "Id,RazaoSocial,NomeFantasia,CNPJ,Email,Endereco,Cidade,Estado,Telefone,DataCadastro,Categoria,Status,Agencia,Conta")] EstabelecimentoViewModel viewModel)
         {
             if (ModelState.IsValid)
             {
-                Estabelecimento estabelecimento = Mapper.Map<EstabelecimentoEditViewModel, Estabelecimento> (viewModel);
+                Estabelecimento estabelecimento = Mapper.Map<EstabelecimentoViewModel, Estabelecimento> (viewModel);
                 try
                 {
                     repositorioEstabelecimentos.Alterar(estabelecimento);

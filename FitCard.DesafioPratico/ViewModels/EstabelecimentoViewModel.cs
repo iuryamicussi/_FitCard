@@ -11,7 +11,7 @@ namespace FitCard.DesafioPratico.ViewModels
 {
     public class EstabelecimentoViewModel
     {
-        [ReadOnly(true)]
+        //[ReadOnly(true)]
         public int Id { get; set; }
 
         [DisplayName("Razão Social")]
