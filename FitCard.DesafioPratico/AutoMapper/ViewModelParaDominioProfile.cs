@@ -13,7 +13,6 @@ namespace FitCard.DesafioPratico.AutoMapper
         public ViewModelParaDominioProfile()
         {
             CreateMap<EstabelecimentoViewModel, Estabelecimento>();
-            CreateMap<EstabelecimentoEditViewModel, Estabelecimento>();
         }
     }
 }

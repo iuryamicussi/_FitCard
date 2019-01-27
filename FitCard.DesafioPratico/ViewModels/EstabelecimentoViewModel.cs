@@ -48,13 +48,14 @@ namespace FitCard.DesafioPratico.ViewModels
 
         [DisplayName("Data de Cadastro")]
         [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime? DataCadastro { get; set; }
 
         [EnumDataType(typeof(Categoria))]
         public Categoria? Categoria { get; set; }
 
         [EnumDataType(typeof(Status))]
-        public Status Status { get; set; }
+        public Status? Status { get; set; }
     
         [DisplayName("Agência")]
         [MaxLength(5)]
